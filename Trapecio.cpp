@@ -9,18 +9,6 @@ double f(double x)
 {
     return 100*pow(x,2)*cos(20*x);
 }
-//error
-double errorf(double a, double b, int N){
-    double h=(b-a)/N;
-    double suma=0.0;
-    double error;
-    for(int i=2;i<N;i++){ 
-        double xi=a+i*h;
-        suma+=f(xi);
-        error=std::abs((f(xi)+(1/2)*(f(a)+f(b)))*h-4.7459);
-    }
-    return error;
-}
 //Calcuilo de la integral aproximada bajo regla trapezoidal
 double Trapezoidal(double a, double b, int N){
     double h=(b-a)/N;
@@ -31,6 +19,7 @@ double Trapezoidal(double a, double b, int N){
     }
     return (suma+(1/2)*(f(a)+f(b)))*h;
 }
+
 
 double Rectangular(double a, double b, int N){
     double h=(b-a)/N;
@@ -50,8 +39,8 @@ for(int N=1; N<=10000; ++N){
     double integralT =Trapezoidal(0.0,1.0,N);
     double integral_exacta=4.7459;
     double integralR=Rectangular(0.0,1.0,N);
-    double e=errorf(0.0,1.0,N);
-    datafile1<<N<<" "<<integralT<<" "<<integral_exacta<<" "<<integralR<<" "<<" "<<errorf<<std::endl;
+    double e=abs(integralT-integral_exacta)/integral_exacta;
+    datafile1<<N<<" "<<integralT<<" "<<integral_exacta<<" "<<integralR<<" "<<" "<<e<<std::endl;
     }
 datafile1.close();
 
