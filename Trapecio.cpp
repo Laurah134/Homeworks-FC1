@@ -83,9 +83,9 @@ scriptFile3<<"set logscale x\n";
 scriptFile3<<"plot 'rectangulos_trapecio.dat' w l title 'Funcion', '' w boxes title 'Rectangulos'\n";
 scriptFile3.close();
 
-std::ofstream scriptFile4("error.gp");
+std::ofstream scriptFile4("errorT.gp");
 scriptFile4<<"set term png\n";
-scriptFile4<<"set output 'error.png'\n";
+scriptFile4<<"set output 'errorT.png'\n";
 scriptFile4<<"set xlabel 'N'\n";
 scriptFile4<<"set ylabel 'Integral'\n";
 scriptFile4<<"set logscale x\n";
@@ -96,7 +96,7 @@ scriptFile4.close();
 system("gnuplot Aproximacion_trapezoidal_rectangular.gp");
 system("gnuplot Aproximacion_trapezoidal.gp");
 system("gnuplot Trapezoide_rectangulos.gp");
-system("gnuplot error.gp");
+system("gnuplot errorT.gp");
 
 
 
